@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "leture", "leture\leture.csproj", "{927DC519-7B5C-48E9-85FC-293AAD295049}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{927DC519-7B5C-48E9-85FC-293AAD295049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{927DC519-7B5C-48E9-85FC-293AAD295049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{927DC519-7B5C-48E9-85FC-293AAD295049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{927DC519-7B5C-48E9-85FC-293AAD295049}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16626013-F39B-42C8-9994-26A7F6FA9B5D}
+	EndGlobalSection
+EndGlobal
