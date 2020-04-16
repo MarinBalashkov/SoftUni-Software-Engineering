@@ -29,10 +29,10 @@ namespace HttpRequester
                 Task.Run(() => ProcessClientAsync(tcpClient));
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
-                var sw = new Stopwatch();
+                /*var sw = new Stopwatch();
 
                 Console.WriteLine(await CreateRequestsAsync(sw));
-                break;
+                break;*/
 
             }
 
@@ -47,7 +47,7 @@ namespace HttpRequester
             int bytesRead = await networkStream.ReadAsync(requestBytes, 0, requestBytes.Length);
             string request = Encoding.UTF8.GetString(requestBytes, 0, bytesRead);
 
-            var sid = Regex.Match(request, @"sid=[^\n]*\n").Value?.Replace("sid=", string.Empty).Trim();
+            /*var sid = Regex.Match(request, @"sid=[^\n]*\n").Value?.Replace("sid=", string.Empty).Trim();
             Console.WriteLine(sid);
             var newSid = Guid.NewGuid().ToString();
             var count = 0;
@@ -61,17 +61,17 @@ namespace HttpRequester
                 sid = null;
                 SessionStore[newSid] = 1;
                 count = 1;
-            }
+            }*/
 
 
             string responseText = "<h1>" + count + "</h1>" + "<h1>" + DateTime.UtcNow + "</h1>";
             string response = "HTTP/1.0 200 OK" + NewLine +
                               "Server: SoftUniServer/1.0" + NewLine +
                               "Content-Type: text/html" + NewLine +
-                              "Set-Cookie: user=Niki; Max-Age: 3600; HttpOnly;" + NewLine +
+                              /*"Set-Cookie: user=Niki; Max-Age: 3600; HttpOnly;" + NewLine +
                               (string.IsNullOrWhiteSpace(sid) ?
                                 ("Set-Cookie: sid=" + newSid + NewLine)
-                                : string.Empty) +
+                                : string.Empty) +*/
                               // "Location: https://google.com" + NewLine +
                               // "Content-Disposition: attachment; filename=niki.html" + NewLine +
                               "Content-Lenght: " + responseText.Length + NewLine +
