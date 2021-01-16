@@ -30,14 +30,14 @@
             Task.Run(() => ProcessClientAsync(tcpClient));
         }
 
-        private void ProcessClientAsync(TcpClient tcpClient)
+        private async Task ProcessClientAsync(TcpClient tcpClient)
         {
             throw new NotImplementedException();
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            this.tcpListener.Stop();
         }
     }
 }
