@@ -1,6 +1,6 @@
 ﻿namespace SIS.HTTP.Enums
 {
-    public enum HttpResponseType
+    public enum HttpResponseCode
     {
         Ok = 200,
         MovedPermanently = 301,
