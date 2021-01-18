@@ -1,7 +1,7 @@
-﻿namespace SIS.HTTP.Enums
+﻿namespace SIS.HTTP
 {
+    using SIS.HTTP.Enums;
     using System;
-    using System.Collections.Generic;
     using System.Text;
 
     public class ResponseCookie : Cookie

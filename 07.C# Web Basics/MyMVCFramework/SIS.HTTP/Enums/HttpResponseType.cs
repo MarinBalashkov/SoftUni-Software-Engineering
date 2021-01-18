@@ -7,9 +7,8 @@
         Found = 302,
         TemporaryRedirect = 307,
         Unauthorized = 401,
-        Forbidden = 403,
-        NotFound = 404,
-        InternalServerError = 500,
+        Forbidden = 404,
+        InternelServerErrror = 500,
         NotImplemented = 501,
     }
 }
