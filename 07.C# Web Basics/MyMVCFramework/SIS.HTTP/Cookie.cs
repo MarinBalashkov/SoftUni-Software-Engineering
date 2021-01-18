@@ -4,9 +4,9 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class Cookies
+    public class Cookie
     {
-        public Cookies( string name, string value)
+        public Cookie( string name, string value)
         {
             this.Name = name;
             this.Value = value;
