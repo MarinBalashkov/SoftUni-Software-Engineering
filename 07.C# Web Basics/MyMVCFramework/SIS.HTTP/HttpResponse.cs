@@ -36,7 +36,32 @@
         public byte[] Body { get; set; }
 
 
+        public override string ToString()
+        {
+            var responseAsString = new StringBuilder();
+            var httpVersionAsString = this.Version switch
+            {
+                HttpVersionType.Http10 => "HTTP/1.0",
+                HttpVersionType.Http11 => "HTTP/1.1",
+                HttpVersionType.Http20 => "HTTP/2.0",
+                _ => "HTTP/1.1",
+            };
 
+            responseAsString.Append($"{httpVersionAsString} {(int)this.StatusCode} {this.StatusCode}" + HttpConstants.NewLine);
+            foreach (var header in this.Headers)
+            {
+                responseAsString.Append(header.ToString() + HttpConstants.NewLine);
+            }
+
+            foreach (var cookie in this.Cookies)
+            {
+                responseAsString.Append("Set-Cookie: " + cookie.ToString() + HttpConstants.NewLine); ;
+            }
+
+            responseAsString.Append(HttpConstants.NewLine);
+
+            return responseAsString.ToString();
+        }
 
     }
 }
