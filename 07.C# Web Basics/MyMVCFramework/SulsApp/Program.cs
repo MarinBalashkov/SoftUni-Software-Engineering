@@ -2,6 +2,7 @@
 {
     using SIS.HTTP;
     using SIS.HTTP.Enums;
+    using SIS.HTTP.Logging;
     using SIS.HTTP.Response;
     using System;
     using System.Collections.Generic;
@@ -18,7 +19,7 @@
             routeTable.Add(new Route(HttpMethodType.Post, "/users/login", DoLogin));
             routeTable.Add(new Route(HttpMethodType.Get, "/contact", Contact));
 
-            var httpServer = new HttpServer(80, routeTable);
+            var httpServer = new HttpServer(80, routeTable, new ConsoleLogger());
             await httpServer.StartAsync();
         }
 
