@@ -25,6 +25,12 @@
 
         // /headers => html table the list of all header
 
+        private static HttpResponse FavIcon(HttpRequest request)
+        {
+            var byteContent = File.ReadAllBytes("wwwroot/favicon.ico");
+            return new FileResponse(byteContent, "image/x-icon");
+        }
+
         private static HttpResponse Contact(HttpRequest request)
         {
             return new HtmlResponse("<h1>contact</h1>");
