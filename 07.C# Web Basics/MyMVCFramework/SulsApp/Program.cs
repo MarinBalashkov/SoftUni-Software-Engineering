@@ -1,13 +1,7 @@
 ﻿namespace SulsApp
 {
-    using SIS.HTTP;
-    using SIS.HTTP.Enums;
-    using SIS.HTTP.Logging;
-    using SIS.HTTP.Response;
-    using SIS.MvsFramework;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
+    using SIS.MvcFramework;
+
     using System.Threading.Tasks;
 
     public class Program
