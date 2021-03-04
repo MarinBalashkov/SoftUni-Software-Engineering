@@ -1,5 +1,7 @@
 ﻿using CodeExamplesFromLectures.Models;
+using CodeExamplesFromLectures.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,15 +14,23 @@ namespace CodeExamplesFromLectures.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration configuration;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            this.configuration = configuration;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var model = new IndexViewModel()
+            {
+                Year = DateTime.UtcNow.Year,
+                YoutubeApiKey = this.configuration["YouTube:ApiKey"]
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()
