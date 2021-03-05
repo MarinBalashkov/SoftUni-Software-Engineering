@@ -24,10 +24,16 @@ namespace CodeExamplesFromLectures.Controllers
 
         public IActionResult Index()
         {
+            //this.ViewData["name"] = "marin";
+            //this.ViewBag["name"] = "BagName";
+            //this.TempData["temp"] = "tempData"; // 1 request live
+
             var model = new IndexViewModel()
             {
                 Year = DateTime.UtcNow.Year,
-                YoutubeApiKey = this.configuration["YouTube:ApiKey"]
+                YoutubeApiKey = this.configuration["YouTube:ApiKey"],
+                Names = new List<string>() {"Marin", "Ivan"},
+                Message = "<strong>Message<strong>",
             };
 
             return View(model);
