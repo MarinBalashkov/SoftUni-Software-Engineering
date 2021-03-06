@@ -1,8 +1,9 @@
-﻿@model  CodeExamplesFromLectures.ViewModels.Home.IndexViewModel
+﻿@model CodeExamplesFromLectures.ViewModels.Home.IndexViewModel
 @*@inject inject service (DI)*@
 @{
     ViewData["Title"] = "Home Page";// send data from view to layout(controller => view => Layout)
     var nextYear = Model.Year + 1;// local variable
+                                  //Layout = "~Views/Shared/_MyLayout.cshtml"; // Custom layout
 }
 
 <div class="text-center">
@@ -11,7 +12,7 @@
 
     <h1 class="display-4">@Html.Raw(Model.Message)</h1>
     <h1 class="display-4">@Model.Message</h1>
-    <h1 class="display-4">@nextYear</h1>
+    <h1 class="display-4" gre>@nextYear</h1>
 
     <!-- comment -->
     @*Comment*@
@@ -20,3 +21,9 @@
 
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@section GoogleLink {
+<li class="nav-item">
+    <a class="nav-link text-dark" href="gogle.com">Google.com</a>
+</li>
+}
