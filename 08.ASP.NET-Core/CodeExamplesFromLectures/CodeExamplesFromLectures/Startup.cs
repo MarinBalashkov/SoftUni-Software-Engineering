@@ -45,12 +45,13 @@ namespace CodeExamplesFromLectures
         {
             if (env.IsDevelopment())
             {
-                app.UseStatusCodePagesWithRedirects("Home/HttpError?statusCode={0}");
-                //app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
             else
             {
+                //app.UseStatusCodePagesWithRedirects("Home/HttpError?statusCode={0}");
+
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
