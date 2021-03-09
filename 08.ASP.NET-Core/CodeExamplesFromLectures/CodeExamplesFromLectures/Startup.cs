@@ -66,6 +66,10 @@ namespace CodeExamplesFromLectures
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "blog",
+                    pattern: "Blog/{slug}/{id?:int}",
+                    defaults: new { controller = "Home", action= "Blog"}); //Blog/my-new-blog-post/2
                 endpoints.MapRazorPages();
             });
         }
