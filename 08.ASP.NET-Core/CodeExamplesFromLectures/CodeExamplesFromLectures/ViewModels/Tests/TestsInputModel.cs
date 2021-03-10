@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CodeExamplesFromLectures.ViewModels.Tests
 {
-    public class TestsInputModel
+    public class TestsInputModel : IValidatableObject
     {
         //public int Id { get; set; }
 
@@ -47,5 +47,12 @@ namespace CodeExamplesFromLectures.ViewModels.Tests
 
         public IFormFileCollection CV { get; set; }
 
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (int.Parse(this.EGN.Substring(0, 2)) != this.DateOfBirth.Year % 100)
+            {
+                yield return new ValidationResult("Year of birth and EGN not matching");
+            }
+        }
     }
 }

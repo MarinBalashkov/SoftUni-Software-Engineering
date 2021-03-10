@@ -2,7 +2,7 @@
 @model TestsInputModel
 <h1>Candiate for Junior Software Developer</h1>
 
-<form class="form" method="post" asp-controller="Tests" asp-action="Index">
+<form class="form" method="post" asp-controller="Tests" asp-action="Index" enctype="multipart/form-data"> @*enctype must be added for files*@
 
 
     <div asp-validation-summary="All"></div>
