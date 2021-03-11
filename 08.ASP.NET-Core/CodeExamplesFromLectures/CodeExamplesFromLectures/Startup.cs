@@ -1,7 +1,9 @@
 using CodeExamplesFromLectures.Data;
+using CodeExamplesFromLectures.Middlewares;
 using CodeExamplesFromLectures.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -56,6 +58,42 @@ namespace CodeExamplesFromLectures
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+
+            app.UseMiddleware<RedirectToGoogleifNotHttsMiddleware>();
+
+
+
+            app.Use( async (context, next) =>
+            {
+                await context.Response.WriteAsync("BEFORE.....");
+                if (!context.Request.IsHttps)
+                {
+                    await next();
+                }
+                await context.Response.WriteAsync("...AFTER");
+            });
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from Middleware!");
+                await next();
+            });
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Go to HTTPS === final middleware");
+            });
+
+
+
+
+            app.Map("/healtcheck", app => 
+                app.Run(async (context) =>
+                {
+                    await context.Response.WriteAsync("I am alive");
+                }));
+
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
