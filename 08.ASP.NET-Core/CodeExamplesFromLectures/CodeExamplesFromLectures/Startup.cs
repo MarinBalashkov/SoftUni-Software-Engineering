@@ -1,5 +1,7 @@
 using CodeExamplesFromLectures.Data;
+using CodeExamplesFromLectures.Filters;
 using CodeExamplesFromLectures.Middlewares;
+using CodeExamplesFromLectures.ModelBinders;
 using CodeExamplesFromLectures.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +32,7 @@ namespace CodeExamplesFromLectures
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IPositionService, PositionService>();
             services.AddTransient<IYearsService, YearsService>();
             //services.AddTransient<IYearsService>((serviceProvider) => new YearsService(this.Configuration["YouTube:ApiKey"])); Inject service with parameters!!
 
@@ -38,7 +41,15 @@ namespace CodeExamplesFromLectures
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+
+            services.AddControllersWithViews(configure =>
+            {
+                //options.Filters.Add(new MyAsyncActionFilter()); // instant global use
+                configure.Filters.Add(typeof(MyAsyncActionFilter));// by type global use
+                configure.ModelBinderProviders.Insert(0, new YearModelBinderProvider());// add custom ModelBinder
+            });
+
+
             services.AddRazorPages();
         }
 
@@ -60,37 +71,37 @@ namespace CodeExamplesFromLectures
             }
 
 
-            app.UseMiddleware<RedirectToGoogleifNotHttsMiddleware>();
+            //app.UseMiddleware<RedirectToGoogleifNotHttsMiddleware>();
 
 
 
-            app.Use( async (context, next) =>
-            {
-                await context.Response.WriteAsync("BEFORE.....");
-                if (!context.Request.IsHttps)
-                {
-                    await next();
-                }
-                await context.Response.WriteAsync("...AFTER");
-            });
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("Hello from Middleware!");
-                await next();
-            });
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Go to HTTPS === final middleware");
-            });
+            //app.Use( async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("BEFORE.....");
+            //    if (!context.Request.IsHttps)
+            //    {
+            //        await next();
+            //    }
+            //    await context.Response.WriteAsync("...AFTER");
+            //});
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Hello from Middleware!");
+            //    await next();
+            //});
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync("Go to HTTPS === final middleware");
+            //});
 
 
 
 
-            app.Map("/healtcheck", app => 
-                app.Run(async (context) =>
-                {
-                    await context.Response.WriteAsync("I am alive");
-                }));
+            //app.Map("/healtcheck", app => 
+            //    app.Run(async (context) =>
+            //    {
+            //        await context.Response.WriteAsync("I am alive");
+            //    }));
 
 
 
@@ -107,10 +118,12 @@ namespace CodeExamplesFromLectures
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 //endpoints.MapControllerRoute(
-                //    name: "blog",
-                //    pattern: "Blog/{slug}/{id?:int}",
-                //    defaults: new { controller = "Home", action= "Blog"}); //Blog/my-new-blog-post/2
+                //    name: "blogUrl",
+                //    pattern: "Blog/{slug}/{id:int}",
+                //    defaults: new { controller = "Home", action = "Blog"}); //Blog/my-new-blog-post/2
+
                 endpoints.MapRazorPages();
             });
         }
