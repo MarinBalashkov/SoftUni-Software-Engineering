@@ -1,0 +1,91 @@
+﻿@using CodeExamplesFromLectures.ViewModels.Tests
+@model TestsInputModel
+<h1>Candiate for Junior Software Developer</h1>
+
+<form class="form" method="post" asp-controller="Tests" asp-action="Index">
+
+
+    <div asp-validation-summary="All"></div>
+
+    <div class=form-group>
+        <label asp-for=Name.FirstName></label>
+        <input asp-for="Name.FirstName" class="form-control" />
+        <span asp-validation-for=Name.FirstName class="text-danger"></span>
+    </div>
+
+
+
+    <div class=form-group>
+        <label asp-for=Name.LastName></label>
+        <input asp-for="Name.LastName" class="form-control" />
+        <span asp-validation-for=Name.LastName class="text-danger"></span>
+    </div>
+
+
+
+    <div class=form-group>
+        <label asp-for=EGN></label>
+        <input asp-for=EGN class="form-control" />
+        <span asp-validation-for=EGN class="text-danger"></span>
+    </div>
+
+
+
+    <div class=form-group>
+        <label asp-for=Email></label>
+        <input asp-for=Email class="form-control" />
+        <span asp-validation-for=Email class="text-danger"></span>
+    </div>
+
+
+
+    <div class=form-group>
+        <label asp-for=University></label>
+        <input asp-for=University class="form-control" />
+        <span asp-validation-for=University class="text-danger"></span>
+    </div>
+
+
+
+    <div class=form-group>
+        <label asp-for=YearsOfExperience></label>
+        <input asp-for=YearsOfExperience class="form-control" />
+        <span asp-validation-for=YearsOfExperience class="text-danger"></span>
+    </div>
+
+
+
+
+    <div class=form-group>
+        <label asp-for=CandidateType></label>
+        <select class="form-control" asp-for=CandidateType asp-items=@Html.GetEnumSelectList(typeof(CandidateType))></select>
+        <span asp-validation-for=CandidateType class="text-danger"></span>
+    </div>
+
+    <div class=form-group>
+        <label asp-for=DateOfBirth></label>
+        <input asp-for=DateOfBirth class="form-control" />
+        <span asp-validation-for=DateOfBirth class="text-danger"></span>
+    </div>
+
+    <div class=form-group>
+        <label asp-for=AllCandidateTypes></label>
+        <select class="form-control" asp-for=AllCandidateTypes asp-items=@Model.AllCandidateTypes></select>
+        <span asp-validation-for=CandidateType class="text-danger"></span>
+    </div>
+
+        <div class=form-group>
+        <label asp-for=CV></label>
+        <input asp-for=CV class="form-control" />
+        <span asp-validation-for=CV class="text-danger"></span>
+    </div>
+
+    <hr />
+
+    <input type="submit" value="Candidate" class="btn btn-primary" />
+</form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
+

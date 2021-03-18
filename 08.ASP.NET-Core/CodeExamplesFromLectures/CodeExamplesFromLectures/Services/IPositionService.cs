@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace CodeExamplesFromLectures.Services
 {
     public interface IPositionService
     {
-        IEnumerable<string> GetAll();
+        IEnumerable<SelectListItem> GetAll();
     }
 }

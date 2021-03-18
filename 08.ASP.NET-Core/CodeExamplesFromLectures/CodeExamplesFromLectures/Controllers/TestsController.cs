@@ -25,12 +25,12 @@ namespace CodeExamplesFromLectures.Controllers
             this.positionService = positionService;
         }
 
-        //public IActionResult Index(int id)// if not pu int = 0
+        //public IActionResult Index(int id)// if not put int = 0
         //{
         //    return this.Json(id);
         //}
 
-        //public IActionResult Index(TestInputModel input, [FromHeader] string accept)// localhost:5001/Test/Index?Id=1&Years=2020&Years=2019&Name.FirstName=Marin&Name.Lastname=Balashkov
+        //public IActionResult Index([FromBody]TestsInputModel input, [FromHeader] string accept, [FromQuery] int id)// localhost:5001/Test/Index?Id=1&Years=2020&Years=2019&Name.FirstName=Marin&Name.Lastname=Balashkov // [FromBody] serialize to JSON
         //{
         //    if (!this.ModelState.IsValid)
         //    {
@@ -46,8 +46,9 @@ namespace CodeExamplesFromLectures.Controllers
         {
             var model = new TestsInputModel()
             {
-                University = "SoftUni",//defaul value
 
+                University = "SoftUni",//defaul value
+                
                 AllCandidateTypes = this.positionService.GetAll()// Get enum from DB
 
             };
