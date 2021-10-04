@@ -1,0 +1,4 @@
+    const list = [...document.querySelectorAll('li')];
+    const ul = document.querySelector('ul');
+    list.sort((a,b) => Number(a.textContent) - Number(b.textContent));
+    list.forEach(li => ul.appendChild(li));
