@@ -3,7 +3,7 @@
  * @param {{}} requirement 
  */
 function solve(requirement) {
-    const {model, carriage, power, carriage, color, wheelsize} = requirement;
+    const {model, power, carriage, color, wheelsize} = requirement;
 
     function getEngine(power) {
         const engines = [

@@ -1,7 +1,9 @@
 function solve(arr) {
     const result = {};
     for (let i = 0; i < arr.length; i += 2) {
-        result[arr[i]] = Number(arr[i + 1]);
+        let name = arr[i];
+        let calories = Number(arr[i + 1]);
+        result[name] = calories;
     }
 
     return result

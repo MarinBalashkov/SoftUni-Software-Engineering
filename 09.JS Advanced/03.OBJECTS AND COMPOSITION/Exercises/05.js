@@ -2,6 +2,8 @@
  * 
  * @param {[]} worker 
  */
+
+
 function solve(tokens) {
     const log = {};
     for (const info of tokens) {
