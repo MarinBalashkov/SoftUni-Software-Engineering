@@ -24,6 +24,13 @@ namespace CodeExamplesFromLectures.Controllers
 
         public IActionResult Index()
         {
+            string a = null;
+            //a.ToLower();
+
+
+            this._logger.LogInformation($"Log in {nameof(Index)}");
+
+
             //this.ViewData["name"] = "marin";
             //this.ViewBag["name"] = "BagName";
             //this.TempData["temp"] = "tempData"; // 1 request live
@@ -42,6 +49,16 @@ namespace CodeExamplesFromLectures.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult HttpError(int statusCode)
+        {
+            if (statusCode == 404)
+            {
+                return this.View("NotFoundError", statusCode);
+            }
+
+            return View("Error");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -29,6 +29,7 @@ namespace CodeExamplesFromLectures
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IYearsService, YearsService>();
+            //services.AddTransient<IYearsService>((serviceProvider) => new YearsService(this.Configuration["YouTube:ApiKey"])); Inject service with parameters!!
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -44,7 +45,8 @@ namespace CodeExamplesFromLectures
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseStatusCodePagesWithRedirects("Home/HttpError?statusCode={0}");
+                //app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
             else
@@ -66,10 +68,10 @@ namespace CodeExamplesFromLectures
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute(
-                    name: "blog",
-                    pattern: "Blog/{slug}/{id?:int}",
-                    defaults: new { controller = "Home", action= "Blog"}); //Blog/my-new-blog-post/2
+                //endpoints.MapControllerRoute(
+                //    name: "blog",
+                //    pattern: "Blog/{slug}/{id?:int}",
+                //    defaults: new { controller = "Home", action= "Blog"}); //Blog/my-new-blog-post/2
                 endpoints.MapRazorPages();
             });
         }

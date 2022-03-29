@@ -1,5 +1,7 @@
-﻿@model CodeExamplesFromLectures.ViewModels.Home.IndexViewModel
+﻿@using Microsoft.AspNetCore.Hosting
+@model CodeExamplesFromLectures.ViewModels.Home.IndexViewModel
 @*@inject inject service (DI)*@
+@inject IWebHostEnvironment env
 @{
     ViewData["Title"] = "Home Page";// send data from view to layout(controller => view => Layout)
     var nextYear = Model.Year + 1;// local variable
@@ -20,6 +22,15 @@
 
 
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <div>@env.EnvironmentName</div>
+    <div>@env.ApplicationName</div>
+    <div>@env.ContentRootFileProvider</div>
+    <div>@env.ContentRootPath</div>
+    <div>@env.WebRootFileProvider</div>
+    <div>@env.WebRootPath</div>
+
+
 </div>
 
 @section GoogleLink {
