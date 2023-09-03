@@ -24,3 +24,11 @@ function defaultHandler(req, res) {
     res.write('Not Found!');
     res.end();
 }
+
+module.exports = {
+    registerHandler, 
+    match, 
+    get: (...params) => registerHandler('GET', ...params), 
+    post: (...params) => registerHandler('POST', ...params), 
+    delete: (...params) => registerHandler('DELETE', ...params), 
+};
