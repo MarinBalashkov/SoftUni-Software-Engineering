@@ -1,22 +1,7 @@
-const html = `
-<html>
+const {loadTemplate, layout}  = require('../util/template');
 
-<head>
-    <title>My Page - Home Page</title>
-    <link rel="stylesheet" href="/static/site.css">
-</head>
-
-<body>
-    <div>
-    <h1>My Page</h1>
-    <p>Welcome to My Page!</p>
-    <p>Loaded from template</p>
-</div>
-</body>
-
-</html>`;
-
-module.exports = (req, res) => {
-    res.write(html);
+module.exports = async (req, res) => {
+    const homePage = await loadTemplate('home');
+    res.write(await layout(homePage));
     res.end();
 };
