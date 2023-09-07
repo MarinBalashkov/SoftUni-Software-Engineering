@@ -1,12 +1,15 @@
 const http = require('http');
+
 const router = require('./router')
 
 const homeController = require('./controllers/homeController');
 const catalogController = require('./controllers/catalogController');
 const createController = require('./controllers/createController');
+const deleteController = require('./controllers/deleteController');
 
 router.get('/', homeController);
-router.get('/', catalogController);
+router.get('/catalog', catalogController);
+router.get('/delete', deleteController);
 router.post('/create', createController);
 
 
