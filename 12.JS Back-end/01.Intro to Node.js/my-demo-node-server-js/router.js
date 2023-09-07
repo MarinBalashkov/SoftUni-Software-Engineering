@@ -1,3 +1,4 @@
+const staticFile = require('./controllers/static');
 const handlers = {};
 
 function registerHandler(method, url, handler) {
@@ -9,8 +10,14 @@ function registerHandler(method, url, handler) {
 }
 
 function match(method, url) {
+    if (method == 'GET' && url.startsWith('/static/')) {
+        return staticFile;
+    }
+
     const methods = handlers[url] || {};
+
     const handler = methods[method];
+
     if (handler == undefined) {
         return defaultHandler;
     }else {
