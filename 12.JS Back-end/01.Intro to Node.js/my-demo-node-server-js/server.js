@@ -18,12 +18,12 @@ router.post('/upload', uploadController);
 router.get('/about', aboutController);
 
 
-const port = 3000;
+const port = 3030;
 const server = http.createServer(requestHandler);
 
 function requestHandler(req, res) {
-    console.log(`>>> ${req.method} ${req.pathname}`);
-    const url = new URL(req.url, 'http://localehost');
+    console.log(`>>> ${req.method} ${req.url}`);
+    const url = new URL(req.url, 'http://localhost');
     const handler = router.match(req.method, url.pathname);
     handler(req, res);
 }
