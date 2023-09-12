@@ -1,6 +1,7 @@
 const http = require('http');
 
 http.createServer((req, res) => {
+    res.write
     res.writeHead(200, {
         'Content-Type': 'application/json'
     });

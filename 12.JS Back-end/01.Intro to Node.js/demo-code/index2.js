@@ -19,6 +19,7 @@ const homePage = `
 
 
 const server = http.createServer((req, res) => {
+    req.
     console.log('>>>' + req.url + req.headers);
     const handler = router.match(req.url);
     handler(req, res);
