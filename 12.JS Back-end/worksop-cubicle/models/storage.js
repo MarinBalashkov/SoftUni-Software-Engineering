@@ -11,7 +11,9 @@ async function init() {
 
     return (req, res, next) => {
         req.storage = {
-            getAll
+            getAll, 
+            create, 
+            getById,
         };
 
         next();
@@ -22,7 +24,7 @@ async function getAll() {
     return Object.entries(data).map(([id, v]) => Object.assign({}, { id }, v));
 }
 
-async function getById() {
+async function getById(id) {
     const cube = data[id];
 
     if (cube) {

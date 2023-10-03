@@ -1,9 +1,14 @@
 {
-    "asdasdas":{
-        "name": "Megaminx",
-        "description": "asd;lamjsl;kfjksdjncasnmvclakjnsdfl;hjanlsdkf",
-        "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg",
-        "difficulty": "3"
-    }
-
+  "asdasdas": {
+    "name": "Megaminx",
+    "description": "asd;lamjsl;kfjksdjncasnmvclakjnsdfl;hjanlsdkf",
+    "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg",
+    "difficulty": "3"
+  },
+  "3qy30ls5q8loukih3i": {
+    "name": "Pyraminx",
+    "description": "sdadasd",
+    "imageUrl": "asdasdasdasdas",
+    "difficulty": 1
+  }
 }

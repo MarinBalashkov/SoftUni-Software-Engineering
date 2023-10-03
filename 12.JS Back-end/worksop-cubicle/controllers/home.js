@@ -4,7 +4,7 @@ module.exports = {
             title: 'Home Page',
             cubes: await req.storage.getAll(), 
         }
-        console.log();
+        console.log(req.storage);
         res.render('index', ctx);
     }
 };
