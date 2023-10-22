@@ -1,0 +1,13 @@
+<h1>This is my first handlebars template !</h1>
+
+<p>{{name}}</p>
+<span>{{age}}</span>
+<span>{{item.pocket}}</span>
+
+<ul>
+    {{#each items}}
+    {{> item}}
+    {{#else}}
+    <li>No items</li>
+    {{/each}}
+</ul>

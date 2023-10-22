@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <header>
+
+        <nav>
+            {{#if}}
+            <span>Welcome, {{user.username}}</span>
+            {{#else}}
+            <span><a href="/login">Sign in</a></span>
+            {{/if}}
+
+            <a href="/">Home</a>
+            <a href="/catalog">Home</a>
+            <a href="/about">Home</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        {{{body}}}
+
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
