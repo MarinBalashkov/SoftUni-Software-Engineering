@@ -1,7 +1,8 @@
+{{#with cube}}
 <h1>Create</h1>
 <div class="form">
-  {{#with cube}}
   <form action='/products/create' method="POST">
+    <p style="color: red;">{{error}}</p>
     <label for="name">Name</label>
     <input type="text" id="name" name="name" value="{{name}}">
     <label for="name">Description</label>
@@ -19,5 +20,5 @@
     </select>
     <input type="submit" value="Create">
   </form>
-  {{/with}}
 </div>
+{{/with}}

@@ -8,39 +8,38 @@ module.exports = {
         };
 
         const ctx = {
-            title: 'Create cube', 
+            title: 'Create cube',
             cube
         }
 
         res.render('create', ctx);
     },
     async post(req, res) {
-        let cube = {};
+        let cube = {
+            name: req.body.name,
+            description: req.body.description,
+            imageUrl: req.body.imageUrl,
+            difficulty: Number(req.body.difficulty)
+        };
+
 
         try {
-            cube = {
-                name: req.body.name,
-                description: req.body.description,
-                imageUrl: req.body.imageUrl,
-                difficulty: Number(req.body.difficulty)
-            };
-
-
             if (!req.body.name || !req.body.description || !req.body.imageUrl || !Number(req.body.difficulty)) {
                 throw new Error('All fields are required!');
             }
 
-
             await req.storage.create(cube);
             res.redirect('/');
         } catch (err) {
-            console.log(err.message);
-            cube[`select${cube.difficulty}`] = true;
 
             const ctx = {
                 title: 'Create Cube',
                 cube
             };
+            
+            if (err.name == 'ValidationError') {
+                ctx.error = err.message;
+            }
 
             res.render('create', ctx);
         }
