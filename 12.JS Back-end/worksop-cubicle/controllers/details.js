@@ -6,6 +6,8 @@ module.exports = {
                 res.redirect('404');
             }
 
+            console.log(cube);
+
             res.render('details', cube);
         } catch (error) {
             console.error(error.message);
